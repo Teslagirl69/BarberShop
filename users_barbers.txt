@@ -1,0 +1,14 @@
+User: Алина, Phone: +7 (980) 557-34-96, Date: 2022-05-05
+User: алина, Phone: +7 (980) 557-34-96, Date: 2022-05-06, Master 
+User: ролбдю, Phone: итьбю, Date: 2022-05-06, Master 2
+User: Кек, Phone: 6475869789, Date: 2022-04-30, Master Екатерина
+User: vb, Phone: fghj, Date: 2022-05-18, Master Игнат, color: #dc2127
+User: Alina, Phone: +7 980 557 34 96, Date: 2022-05-27, Master Екатерина, color: #dbadff
+User: hgfd, Phone: hgvfcx, Date: 2022-06-03, Master Екатерина, color: 
+User: hgfd, Phone: hgvfcx, Date: 2022-06-03, Master Екатерина, color: #a4bdfc
+User: 17, Phone: dfg, Date: 2022-05-26, Master Екатерина, color: #46d6db
+User: 17, Phone: hgfd, Date: 2022-05-26, Master Екатерина, color: #a4bdfc
+User: vcx, Phone: nbvc, Date: 2022-06-02, Master Екатерина, color: Желтый
+User: 17, Phone: +7 (980) 557-34-96, Date: , Master Выберите подходящего Вам мастера, color: Зеленый
+User: Alina, Phone: +7 980 557 34 96, Date: 2022-05-27, Master Выберите подходящего Вам мастера, color: Зеленый
+
