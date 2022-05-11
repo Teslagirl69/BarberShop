@@ -3,9 +3,17 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+
+
+	def get_db
+		return SQLite3::Database.new 'barbershop.db'
+	end
+
+
 configure do
-	@db = SQLite3::Database.new 'barbershop.db'
-		@db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
+	db = get_db
+
+	db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
 	  "id"  INTEGER PRIMARY KEY AUTOINCREMENT,
 	  "user_name" TEXT,
 	  "phone" TEXT,
@@ -14,6 +22,9 @@ configure do
 	  "colour"  TEXT
 	)'
 end
+
+
+
 
 
 
@@ -55,14 +66,22 @@ hh.each do |key, value|
 end
 
 
+
+db = get_db
+db.execute 'insert into Users (user_name, phone, date, master,  colour) values (?,?,?,?,?)', [@user_name, @phone, @date, @master, @ok_colour]
+
 #сообщение после ввода данных пользователя
 @title = 'Спасибо, запись прошла успешно'
 @message = "#{@user_name}, мы будем ждать Вас #{@date}. Ваш мастер #{@master}. Вы выбрали #{@ok_colour} цвет для окрашивания"
 
-#запись данных, предоставленных пользователем в отдельный файл
+=begin
+запись данных, предоставленных пользователем в отдельный файл
 		f = File.open("users_barbers.txt", "a")
 		f.write "User: #{@user_name}, Phone: #{@phone}, Date: #{@date}, Master #{@master}, color: #{@ok_colour}\n\r"
 		f.close
+=end
+
+
 erb :message
 
 end
