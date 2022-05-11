@@ -14,12 +14,14 @@ configure do
 	db = get_db
 
 	db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
-	  "id"  INTEGER PRIMARY KEY AUTOINCREMENT,
-	  "user_name" TEXT,
-	  "phone" TEXT,
-	  "date"  TEXT,
-	  "master"  TEXT,
-	  "colour"  TEXT
+	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
+	"user_name"	TEXT,
+	"phone"	TEXT,
+	"date"	TEXT,
+	"time"	TEXT,
+	"master"	TEXT,
+	"colour"	TEXT
+);
 	)'
 end
 
@@ -51,10 +53,11 @@ post '/visit' do
 	@user_name = params[:user_name]
 	@phone = params[:phone]
 	@date = params[:date]
+	@time = params[:time]
 	@master = params[:master]
 	@ok_colour = colors[params[:color]]
 
-hh = {:user_name => "Что-то пошло не так, введите имя", :phone => "Что-то пошло не так, введите телефон", :date => "Что-то пошло не так, выберите дату"}
+hh = {:user_name => "Что-то пошло не так, введите имя", :phone => "Что-то пошло не так, введите телефон", :date => "Что-то пошло не так, выберите дату ", :time => "Что-то пошло не так, выберите время "}
 
 hh.each do |key, value|
 
@@ -68,11 +71,11 @@ end
 
 
 db = get_db
-db.execute 'insert into Users (user_name, phone, date, master,  colour) values (?,?,?,?,?)', [@user_name, @phone, @date, @master, @ok_colour]
+db.execute 'insert into Users (user_name, phone, date, time, master, colour) values (?,?,?,?,?,?)', [@user_name, @phone, @date, @time, @master, @ok_colour]
 
 #сообщение после ввода данных пользователя
 @title = 'Спасибо, запись прошла успешно'
-@message = "#{@user_name}, мы будем ждать Вас #{@date}. Ваш мастер #{@master}. Вы выбрали #{@ok_colour} цвет для окрашивания"
+@message = "#{@user_name}, мы будем ждать Вас #{@date}, время записи: #{@time}. Ваш мастер #{@master}. Вы выбрали #{@ok_colour} цвет для окрашивания"
 
 =begin
 запись данных, предоставленных пользователем в отдельный файл
