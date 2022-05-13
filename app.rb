@@ -6,14 +6,16 @@ require 'sqlite3'
 
 
 	def get_db
-		return SQLite3::Database.new 'barbershop.db'
+		@db =  SQLite3::Database.new 'barbershop.db'
+	  @db.results_as_hash = true
+  return @db
 	end
 
 
 configure do
-	db = get_db
+	@db = get_db
 
-	db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
+	@db.execute 'CREATE TABLE IF NOT EXISTS "Users" (
 	"id"	INTEGER PRIMARY KEY AUTOINCREMENT,
 	"user_name"	TEXT,
 	"phone"	TEXT,
@@ -66,8 +68,8 @@ end
 
 
 
-db = get_db
-db.execute 'insert into Users (user_name, phone, date, time, master, colour) values (?,?,?,?,?,?)', [@user_name, @phone, @date, @time, @master, @ok_colour]
+@db = get_db
+@db.execute 'insert into Users (user_name, phone, date, time, master, colour) values (?,?,?,?,?,?)', [@user_name, @phone, @date, @time, @master, @ok_colour]
 
 #сообщение после ввода данных пользователя
 @title = 'Спасибо, запись прошла успешно'
@@ -141,16 +143,12 @@ end
 
 
 get '/show_users' do
-	erb :show_users
+#сделали запрос
+	@db = get_db
+
+#получили результаты, в 	@results  получили набор данных
+
+@results = @db.execute 'select * from Users order by id desc'
+@db.close
+erb :show_users
 end
-=begin
-
-rescue StandardError => e
-
-
-	dbase = SQLite3::Database.new 'barbershop.db'
-	dbase.execute 'select * from Users order by id desc'
-end
-=end
-
-
