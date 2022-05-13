@@ -26,10 +26,6 @@ configure do
 end
 
 
-
-
-
-
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"
 end
@@ -105,9 +101,10 @@ post '/admin' do
 if @login == 'admin' && @password == 'admin'
 
 #Выдача файла при верном пароле
+=begin
 send_file '/home/tesla/Projects/bak/22/RubySchool_Lesson_24/users_barbers.txt'
 puts users_barbers.txt
-
+=end
 
 else
 	@title = 'Ошибка при вводе логина или пароля'
@@ -141,5 +138,19 @@ Pony.mail(
   })
 redirect '/success'
 end
+
+
+get '/show_users' do
+	erb :show_users
+end
+=begin
+
+rescue StandardError => e
+
+
+	dbase = SQLite3::Database.new 'barbershop.db'
+	dbase.execute 'select * from Users order by id desc'
+end
+=end
 
 
