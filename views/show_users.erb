@@ -5,9 +5,7 @@
 <%= @results %>
 
 
-<table class="table">
-
-
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Имя</th>
@@ -18,28 +16,23 @@
       <th scope="col">Мастер</th>
     </tr>
   </thead>
-
-
   <% @results.each do |row| %>
 
+  <tbody>
 
+      <tr>
 
+        <td><%= row['user_name'] %></td>
+        <td><%= row['phone'] %></td>
+        <td><%= row['date'] %></td>
+        <td><%= row['time'] %></td>
+        <td><%= row['colour'] %></td>
+        <td><%= row['master'] %></td>
 
-<tbody>
+      </tr>
+    <% end %>
 
-    <tr>
-
-      <td><%= row['user_name'] %></td>
-      <td><%= row['phone'] %></td>
-      <td><%= row['date'] %></td>
-      <td><%= row['time'] %></td>
-      <td><%= row['colour'] %></td>
-      <td><%= row['master'] %></td>
-
-    </tr>
-  <% end %>
-
-    </tbody>
+</tbody>
 
 </table>
 
