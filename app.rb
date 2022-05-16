@@ -28,6 +28,12 @@ def get_db
   return db
 end
 
+
+before do
+	db = get_db
+	@barbers = db.execute 'select * from Barbers'
+end
+
 #запускается configure каждый раз при запуске приложения, создает таблицы, если нужно
 configure do
 	db = get_db
@@ -56,12 +62,12 @@ get '/' do
 end
 
 get '/about' do
-
-
 	erb :about
 end
 
 get '/visit' do
+
+
 	erb :visit
 end
 
